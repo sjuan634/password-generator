@@ -3,39 +3,46 @@ let lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
 let upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let numbers = [0,1,2,3,4,5,6,7,8,9]
 let specialCharacters = "~!@#$%^&*()_-+={[}]|:;'<,>.?/";
-let lengthPass;
-let shouldUseSpecial;
-let shouldUseLower;
-let shouldUseUpper;
-let shouldUseNum;
-let setToInclude = [];
 
 function generatePassword () {
-  lengthPass = prompt("How many characters do you want in you password? (8-128");
+  let lengthPass = prompt("How many characters do you want in you password? (8-128)");
   while (lengthPass < 8 || lengthPass > 128) {
     alert("Invalid entry \nChoose a number between 8 - 128");
-    lengthPass = prompt("How many characters do you want in you password? (8-128");
+    lengthPass = prompt("How many characters do you want in you password? (8-128)");
   }
-  shouldUseNum = confirm("Do you want number characters?");
-  shouldUseLower = confirm("Do you want lower case characters?");
-  shouldUseUpper = confirm("Do you want upper case characters?");
-  shouldUseSpecial = confirm("Do you want special characters?");
+  let shouldUseNum = confirm("Do you want number characters?");
+  let shouldUseLower = confirm("Do you want lower case characters?");
+  let shouldUseUpper = confirm("Do you want upper case characters?");
+  let shouldUseSpecial = confirm("Do you want special characters?");
+
+  let includeChoices = [];
 
   if (shouldUseNum) {
-    setToInclude.push(numbers);
+    includeChoices.push(numbers);
   }
 
   if (shouldUseLower) {
-    setToInclude.push(lowerCaseLetters);
+    includeChoices.push(lowerCaseLetters);
   }
 
   if (shouldUseUpper) {
-    setToInclude.push(upperCaseLetters);
+    includeChoices.push(upperCaseLetters);
   }
 
   if (shouldUseSpecial) {
-    setToInclude.push(specialCharacters);
+    includeChoices.push(specialCharacters);
   }
+
+  password = "";
+  for (var i = 0; i < lengthPass; i++){
+    let choicesIndex = Math.floor(Math.random() * includeChoices.length);
+    console.log(choicesIndex);
+    let randomSet = includeChoices[choicesIndex];
+    console.log(randomSet);
+    password += randomSet[Math.floor(Math.random() * randomSet.length)];
+    console.log(password);
+  }
+  return(password);
 }
 
 // Get references to the #generate element
