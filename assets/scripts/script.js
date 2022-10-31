@@ -9,7 +9,7 @@ function generatePassword () {
   let lengthPass = parseInt(prompt("How many characters do you want in you password? (8-128)"));
   // Validates that user enter an integer
   while (!Number.isInteger(parseInt(lengthPass))) {
-    alert("You need to enter a integer. Try again.");
+    alert("You need to enter an integer. Try again.");
     lengthPass = prompt("How many characters do you want in you password? (8-128)");
   }
   // Validates that user enter a number between 8 and 128
